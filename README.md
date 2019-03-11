@@ -1,6 +1,14 @@
-#temp-do-server
+# temporary-server
 
-Run `./connect.sh` to start.
+## Setup
+- Install terraform `brew install terraform`
+- Set `DIGITALOCEAN_TOKEN` environment variable from a [personal access token](https://cloud.digitalocean.com/account/api/tokens?i=1894d4)
+
+## Running
+- Connect to a temporary server with a socks5 proxy port forward on 8140 `./connect.sh`
+
+## Development
+- Install pre-commit hooks `brew install pre-commit`
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
