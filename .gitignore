@@ -6,5 +6,5 @@
 # Module directory
 .terraform/
 
-# IDE
-.idea/
+# SSH
+id_rsa
