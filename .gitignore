@@ -4,7 +4,7 @@
 *.tfplan
 
 # Module directory
-.terraform/
+.terraform*
 
 # SSH
 id_rsa
