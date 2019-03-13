@@ -3,7 +3,13 @@ terraform {
 }
 
 variable "private_key_file" {
-  default = "id_rsa"
+  description = "name of the private_key_file"
+  default     = "id_rsa"
+}
+
+resource "random_string" "hostname" {
+  length  = 10
+  special = false
 }
 
 resource "tls_private_key" "temporary" {
@@ -27,7 +33,7 @@ resource "digitalocean_ssh_key" "temporary" {
 
 resource "digitalocean_droplet" "temporary" {
   image  = "ubuntu-18-04-x64"
-  name   = "temporary"
+  name   = "${random_string.hostname.result}"
   region = "nyc1"
   size   = "s-1vcpu-1gb"
 

@@ -15,7 +15,7 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| private\_key\_file |  | string | `"id_rsa"` | no |
+| private\_key\_file | name of the private_key_file | string | `"id_rsa"` | no |
 
 ## Outputs
 
