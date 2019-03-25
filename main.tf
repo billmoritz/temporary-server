@@ -2,6 +2,22 @@ terraform {
   required_version = "0.11.7"
 }
 
+provider "local" {
+  version = "~> 1.1"
+}
+
+provider "random" {
+  version = "~> 2.0"
+}
+
+provider "tls" {
+  version = "~> 1.2"
+}
+
+provider "digitalocean" {
+  version = "~> 1.1"
+}
+
 variable "private_key_file" {
   description = "name of the private_key_file"
   default     = "id_rsa"
