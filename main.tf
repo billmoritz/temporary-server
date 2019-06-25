@@ -3,19 +3,19 @@ terraform {
 }
 
 provider "local" {
-  version = "~> 1.1"
+  version = "~> 1.2.2"
 }
 
 provider "random" {
-  version = "~> 2.0"
+  version = "~> 2.1.2"
 }
 
 provider "tls" {
-  version = "~> 1.2"
+  version = "~> 2.0.1"
 }
 
 provider "digitalocean" {
-  version = "~> 1.1"
+  version = "~> 1.4.0"
 }
 
 variable "private_key_file" {
@@ -34,8 +34,8 @@ resource "tls_private_key" "temporary" {
 }
 
 resource "local_file" "private_key_pem" {
-  content  = "${tls_private_key.temporary.private_key_pem}"
-  filename = "${var.private_key_file}"
+  sensitive_content = "${tls_private_key.temporary.private_key_pem}"
+  filename          = "${var.private_key_file}"
 
   provisioner "local-exec" {
     command = "chmod 600 ${var.private_key_file}"
@@ -50,7 +50,7 @@ resource "digitalocean_ssh_key" "temporary" {
 resource "digitalocean_droplet" "temporary" {
   image  = "ubuntu-18-04-x64"
   name   = "${random_string.hostname.result}"
-  region = "nyc1"
+  region = "nyc3"
   size   = "s-1vcpu-1gb"
 
   ssh_keys = ["${digitalocean_ssh_key.temporary.fingerprint}"]
