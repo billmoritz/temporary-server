@@ -3,8 +3,9 @@
 *.tfstate.backup
 *.tfplan
 
-# Module directory
+# Terraform stuff
 .terraform*
+terraform_*.zip
 
 # SSH
 id_rsa

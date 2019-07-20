@@ -1,13 +1,23 @@
 # temporary-server
 
 ## Setup
-- Install terraform `brew install terraform`
+
+- Install terraform
+
+```sh
+wget https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_darwin_amd64.zip
+unzip terraform_0.11.7_darwin_amd64.zip
+mv terraform /usr/local/bin
+```
+
 - Set `DIGITALOCEAN_TOKEN` environment variable from a [personal access token](https://cloud.digitalocean.com/account/api/tokens?i=1894d4)
 
 ## Running
+
 - Connect to a temporary server with a socks5 proxy port forward on 8140 `./connect.sh`
 
 ## Development
+
 - Install pre-commit hooks `brew install pre-commit`
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
