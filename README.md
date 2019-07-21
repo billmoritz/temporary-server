@@ -19,6 +19,7 @@ mv terraform /usr/local/bin
 ## Development
 
 - Install pre-commit hooks `brew install pre-commit`
+- Install terraform-docs `brew install terraform-docs`
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs

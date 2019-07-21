@@ -47,11 +47,24 @@ resource "digitalocean_ssh_key" "temporary" {
   public_key = "${tls_private_key.temporary.public_key_openssh}"
 }
 
+data "template_cloudinit_config" "droplet-userdata" {
+  gzip          = false
+  base64_encode = false
+
+  part {
+    filename     = "init.cfg"
+    content_type = "text/cloud-config"
+    content      = "${file("${path.module}/cloud-config.txt")}"
+  }
+}
+
 resource "digitalocean_droplet" "temporary" {
   image  = "ubuntu-18-04-x64"
   name   = "${random_string.hostname.result}"
   region = "nyc3"
   size   = "s-1vcpu-1gb"
+
+  user_data = "${data.template_cloudinit_config.droplet-userdata.rendered}"
 
   ssh_keys = ["${digitalocean_ssh_key.temporary.fingerprint}"]
 }
