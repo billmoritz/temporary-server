@@ -58,6 +58,17 @@ data "template_cloudinit_config" "droplet-userdata" {
   }
 }
 
+# Delay to prevent `invalid key identifiers for Droplet creation` error
+resource "null_resource" "delay" {
+  provisioner "local-exec" {
+    command = "sleep 10"
+  }
+
+  triggers = {
+    "before" = "${digitalocean_ssh_key.temporary.fingerprint}"
+  }
+}
+
 resource "digitalocean_droplet" "temporary" {
   image  = "ubuntu-18-04-x64"
   name   = "${random_string.hostname.result}"
@@ -66,7 +77,8 @@ resource "digitalocean_droplet" "temporary" {
 
   user_data = "${data.template_cloudinit_config.droplet-userdata.rendered}"
 
-  ssh_keys = ["${digitalocean_ssh_key.temporary.fingerprint}"]
+  ssh_keys   = ["${digitalocean_ssh_key.temporary.fingerprint}"]
+  depends_on = ["null_resource.delay"]
 }
 
 output "connection_string" {
