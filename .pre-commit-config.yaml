@@ -6,7 +6,7 @@ repos:
     - id: terraform_fmt
     - id: terraform_docs
 - repo: git://github.com/pre-commit/pre-commit-hooks
-  rev: v2.1.0
+  rev: v2.5.0
   hooks:
     - id: trailing-whitespace
     - id: check-yaml
@@ -16,7 +16,7 @@ repos:
     - id: detect-aws-credentials
     - id: detect-private-key
 - repo: git://github.com/Lucas-C/pre-commit-hooks
-  rev: v1.1.6
+  rev: v1.1.7
   hooks:
     - id: remove-crlf
     - id: forbid-tabs

@@ -2,14 +2,7 @@
 
 ## Setup
 
-- Install terraform
-
-```sh
-wget https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_darwin_amd64.zip
-unzip terraform_0.11.7_darwin_amd64.zip
-mv terraform /usr/local/bin
-```
-
+- Install terraform with either [tfenv](https://github.com/tfutils/tfenv) or [tfswitcher](https://warrensbox.github.io/terraform-switcher/)
 - Set `DIGITALOCEAN_TOKEN` environment variable from a [personal access token](https://cloud.digitalocean.com/account/api/tokens?i=1894d4)
 
 ## Running
@@ -22,11 +15,22 @@ mv terraform /usr/local/bin
 - Install terraform-docs `brew install terraform-docs`
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Providers
+
+| Name | Version |
+|------|---------|
+| digitalocean | n/a |
+| local | n/a |
+| null | n/a |
+| random | n/a |
+| template | n/a |
+| tls | n/a |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| private\_key\_file | name of the private_key_file | string | `"id_rsa"` | no |
+|------|-------------|------|---------|:-----:|
+| private\_key\_file | name of the private\_key\_file | `string` | `"id_rsa"` | no |
 
 ## Outputs
 
