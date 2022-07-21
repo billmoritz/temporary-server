@@ -13,9 +13,9 @@ resource "tls_private_key" "temporary" {
   rsa_bits  = 4096
 }
 
-resource "local_file" "private_key_pem" {
-  sensitive_content = tls_private_key.temporary.private_key_pem
-  filename          = var.private_key_file
+resource "local_sensitive_file" "private_key_pem" {
+  content  = tls_private_key.temporary.private_key_pem
+  filename = var.private_key_file
 
   provisioner "local-exec" {
     command = "chmod 600 ${var.private_key_file}"
@@ -50,7 +50,7 @@ resource "null_resource" "delay" {
 }
 
 resource "digitalocean_droplet" "temporary" {
-  image  = "ubuntu-18-04-x64"
+  image  = "debian-11-x64"
   name   = random_string.hostname.result
   region = "nyc3"
   size   = "s-1vcpu-1gb"

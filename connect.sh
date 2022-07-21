@@ -26,8 +26,8 @@ function backoff {
 
 terraform init
 terraform apply -auto-approve
-IP=$(terraform output ipv4_address)
-SSH_KEY=$(terraform output private_key_file)
+IP=$(terraform output -raw ipv4_address)
+SSH_KEY=$(terraform output -raw private_key_file)
 ssh -O check $IP
 ssh -O stop $IP
 backoff ssh -tA -C -D 8140 -i $SSH_KEY root@$IP
